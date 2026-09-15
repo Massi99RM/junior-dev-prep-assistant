@@ -1,0 +1,17 @@
+# Web framework
+fastapi
+
+# ASGI server
+uvicorn
+
+# Data validation
+pydantic
+
+# Loads variables from .env files into the environment
+python-dotenv
+
+# Async HTTP client — used to call Ollama's local API
+httpx
+
+# Official Anthropic SDK — used to call Claude API
+anthropic
