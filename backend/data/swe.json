@@ -1,0 +1,34 @@
+{
+  "category": "Software Engineering",
+  "description": "Core software engineering concepts and interview prep topics.",
+  "topics": [
+    {
+      "topic_name": "RESTful APIs",
+      "description": "Designing and understanding standard REST web services.",
+      "prompts": [
+        {
+          "label": "Explain Idempotency",
+          "prompt": "Explain the concept of idempotency in RESTful APIs with practical examples suitable for a junior developer."
+        },
+        {
+          "label": "HTTP Status Codes",
+          "prompt": "Break down the most common HTTP status codes (2xx, 4xx, 5xx) and when to use each one."
+        }
+      ]
+    },
+    {
+      "topic_name": "Git Workflows",
+      "description": "Version control best practices and collaboration workflows.",
+      "prompts": [
+        {
+          "label": "Merge vs Rebase",
+          "prompt": "Explain the difference between git merge and git rebase, and when a junior developer should use each."
+        },
+        {
+          "label": "Resolving Merge Conflicts",
+          "prompt": "What causes a merge conflict in Git and what is a step-by-step process to resolve it safely?"
+        }
+      ]
+    }
+  ]
+}
