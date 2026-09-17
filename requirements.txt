@@ -6,6 +6,7 @@ uvicorn
 
 # Data validation
 pydantic
+pydantic-settings
 
 # Loads variables from .env files into the environment
 python-dotenv
