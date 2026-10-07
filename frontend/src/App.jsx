@@ -3,6 +3,7 @@ import { getTopics, getConfig } from './services/api';
 import Sidebar from './components/Sidebar';
 import ChatPanel from './components/ChatPanel';
 import ProviderBadge from './components/ProviderBadge';
+import './App.css';
 
 function App() {
   const [topics, setTopics] = useState([]);
