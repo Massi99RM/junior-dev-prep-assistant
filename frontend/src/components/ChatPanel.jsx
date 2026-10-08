@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import ReactMarkdown from 'react-markdown';
 import { sendMessage } from '../services/api';
 
 function ChatPanel({ messages, inputValue, onInputChange, onMessagesUpdate }) {
@@ -20,7 +21,6 @@ function ChatPanel({ messages, inputValue, onInputChange, onMessagesUpdate }) {
     const userMessageContent = inputValue.trim();
     onInputChange('');
 
-    // Assign a unique client-side ID to avoid index keys
     const newUserMessage = { 
       id: crypto.randomUUID(), 
       role: 'user', 
@@ -67,7 +67,13 @@ function ChatPanel({ messages, inputValue, onInputChange, onMessagesUpdate }) {
           messages.map((msg) => (
             <div key={msg.id} className={`message-bubble ${msg.role}`}>
               <span className="message-role">{msg.role === 'user' ? 'You' : 'Assistant'}</span>
-              <div className="message-content">{msg.content}</div>
+              <div className="message-content">
+                {msg.role === 'assistant' ? (
+                  <ReactMarkdown>{msg.content}</ReactMarkdown>
+                ) : (
+                  msg.content
+                )}
+              </div>
             </div>
           ))
         )}
