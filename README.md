@@ -44,9 +44,47 @@ requires only a config change — no code modifications.
 ```
 junior-dev-prep-assistant/
 │
+├── .env.example        # Template for environment variables
+├── .gitignore          # Git exclusion rules for node_modules, venv, cache, etc.
+├── requirements.txt    # Python direct dependencies
+│
 ├── backend/            # FastAPI application, routers, and LLM service layer
-├── frontend/           # React application featuring the suggested prompts interface
-├── docker-compose.yml  # Container orchestration for seamless local setup
+│       ├── __init__.py
+│       ├── main.py     # FastAPI entrypoint, CORS setup, and router inclusion
+│       ├── config.py   # Environment configuration and provider settings (.env support)
+│       ├── routers/
+│       │   ├── __init__.py
+│       │   ├── topics.py   # GET /api/topics — serves topic hierarchy from swe.json
+│       │   ├── chat.py     # POST /api/chat — handles messages and routes to LLM service
+│       │   └── config.py   # GET and POST /api/config — view and update active provider
+│       ├── services/
+│       │   ├── __init__.py
+│       │   ├── llm_service.py      # Unified async adapter routing requests to Claude or Ollama
+│       │   └── topic_service.py    # Loads, parses, and serves prompt modules from the data directory
+│       ├── schemas/
+│       │   ├── __init__.py
+│       │   └── schemas.py  # Pydantic models for strict request/response data validation
+│       └── data/
+│           └── swe.json    # Modular JSON file storing Software Engineering categories and prompts
+│
+├── frontend/                   # React application (Vite)
+│       ├── public/
+│       ├── src/
+│       │   ├── components/
+│       │   │   ├── Sidebar.jsx         # Topic categories and clickable prompt buttons
+│       │   │   ├── ChatPanel.jsx       # Message history, input, loading state, markdown rendering
+│       │   │   └── ProviderBadge.jsx   # Displays active LLM provider in the header
+│       │   ├── services/
+│       │   │   └── api.js              # Centralised axios client for all backend API calls
+│       │   ├── App.jsx                 # Root component — shared state and layout
+│       │   ├── App.css                 # Layout and component styles
+│       │   ├── index.css               # Global CSS variables, resets, light/dark theme
+│       │   └── main.jsx                # React entry point
+│       ├── index.html
+│       ├── package.json
+│       └── vite.config.js
+│
+├── docker-compose.yml  # Container orchestration for seamless local setup (pending)
 └── README.md
 ```
 
