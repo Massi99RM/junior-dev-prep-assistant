@@ -32,7 +32,7 @@ class ChatResponse(BaseModel):
 class ConfigResponse(BaseModel):
     llm_provider: str
     ollama_model: str
-    ollama_host: str
+    ollama_base_url: str
 
 class ConfigUpdateRequest(BaseModel):
     llm_provider: str

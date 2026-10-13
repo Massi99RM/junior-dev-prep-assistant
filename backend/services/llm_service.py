@@ -9,7 +9,7 @@ async def generate_response(prompt: str, provider: str = None) -> tuple[str, str
     active_provider = provider if provider else settings.llm_provider
 
     if active_provider == "ollama":
-        url = f"{settings.ollama_host}/api/generate"
+        url = f"{settings.ollama_base_url}/api/generate"
         payload = {
             "model": settings.ollama_model,
             "prompt": prompt,

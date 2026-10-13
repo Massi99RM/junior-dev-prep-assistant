@@ -5,7 +5,7 @@ class Settings(BaseSettings):
     llm_provider: str = "ollama"
 
     # Ollama config
-    ollama_host: str = "http://localhost:11434"
+    ollama_base_url: str = "http://localhost:11434"
     ollama_model: str = "llama3.2"
 
     # Anthropic config

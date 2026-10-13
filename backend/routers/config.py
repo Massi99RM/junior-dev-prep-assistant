@@ -9,7 +9,7 @@ def get_config():
     return ConfigResponse(
         llm_provider=settings.llm_provider,
         ollama_model=settings.ollama_model,
-        ollama_host=settings.ollama_host
+        ollama_base_url=settings.ollama_base_url
     )
 
 @router.post("", response_model=ConfigResponse)
@@ -19,5 +19,5 @@ def update_config(update: ConfigUpdateRequest):
     return ConfigResponse(
         llm_provider=settings.llm_provider,
         ollama_model=settings.ollama_model,
-        ollama_host=settings.ollama_host
+        ollama_base_url=settings.ollama_base_url
     )
