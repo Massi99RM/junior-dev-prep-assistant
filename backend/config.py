@@ -11,6 +11,14 @@ class Settings(BaseSettings):
     # Anthropic config
     anthropic_api_key: str = ""
 
+    # CORS configuration
+    cors_origins: str = "http://localhost:5173"
+
+    @property
+    def cors_origins_list(self) -> list[str]:
+        """Return CORS origins as a clean list."""
+        return [origin.strip() for origin in self.cors_origins.split(",") if origin.strip()]
+
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
 settings = Settings()
