@@ -1,9 +1,13 @@
 import asyncio
+from functools import lru_cache
 import httpx
 from anthropic import Anthropic
 from backend.config import settings
 
-client = Anthropic(api_key=settings.anthropic_api_key)
+@lru_cache(maxsize=1)
+def get_claude_client() -> Anthropic:
+    """Initialize and cache the Anthropic client instance."""
+    return Anthropic(api_key=settings.anthropic_api_key)
 
 async def generate_response(prompt: str, provider: str = None) -> tuple[str, str]:
     active_provider = provider if provider else settings.llm_provider
@@ -22,8 +26,8 @@ async def generate_response(prompt: str, provider: str = None) -> tuple[str, str
             return data.get("response", ""), "ollama"
 
     elif active_provider == "claude":
-        # Run the synchronous Anthropic SDK call in a thread pool to avoid blocking the event loop
         def call_claude():
+            client = get_claude_client()
             message = client.messages.create(
                 model="claude-haiku-4-5-20251001",
                 max_tokens=1024,
