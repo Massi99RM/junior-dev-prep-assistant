@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { sendMessage } from '../services/api';
 
 function ChatPanel({ messages, inputValue, onInputChange, onMessagesUpdate }) {
@@ -69,7 +70,7 @@ function ChatPanel({ messages, inputValue, onInputChange, onMessagesUpdate }) {
               <span className="message-role">{msg.role === 'user' ? 'You' : 'Assistant'}</span>
               <div className="message-content">
                 {msg.role === 'assistant' ? (
-                  <ReactMarkdown>{msg.content}</ReactMarkdown>
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>{msg.content}</ReactMarkdown>
                 ) : (
                   msg.content
                 )}
