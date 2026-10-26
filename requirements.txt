@@ -1,18 +1,18 @@
 # Web framework
-fastapi
+fastapi==0.141.1
 
 # ASGI server
-uvicorn
+uvicorn==0.53.0
 
 # Data validation
-pydantic
-pydantic-settings
+pydantic==2.13.5
+pydantic-settings==2.16.1
 
 # Loads variables from .env files into the environment
-python-dotenv
+python-dotenv==1.2.3
 
 # Async HTTP client — used to call Ollama's local API
-httpx
+httpx==0.28.1
 
 # Official Anthropic SDK — used to call Claude API
-anthropic
+anthropic==1.5.0
